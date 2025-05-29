@@ -9,11 +9,11 @@ services:
   postgres:
     image: 'postgres:latest'
     environment:
-      - 'POSTGRES_DB=programa_academico_db'
+      - 'POSTGRES_DB=programa'
       - 'POSTGRES_PASSWORD=a1b2c3d4'
       - 'POSTGRES_USER=devdb'
     healthcheck:
-      test: [ "CMD-SHELL","pg_isready -U devdb -d programa_academico_db" ]
+      test: [ "CMD-SHELL","pg_isready -U devdb -d programa" ]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -25,11 +25,11 @@ services:
   postgres2:
     image: 'postgres:latest'
     environment:
-      - 'POSTGRES_DB=cursosdb'
+      - 'POSTGRES_DB=curso'
       - 'POSTGRES_PASSWORD=a1b2c3d4'
       - 'POSTGRES_USER=devdb'
     healthcheck:
-      test: [ "CMD-SHELL","pg_isready -U devdb -d cursosdb" ]
+      test: [ "CMD-SHELL","pg_isready -U devdb -d curso" ]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -58,7 +58,7 @@ services:
     networks:
       - red-backend-app
 
-  semestre-service:
+  curso-service:
     image: angelcuero/curso-service:latest
     container_name: curso-service
     restart: unless-stopped
